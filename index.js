@@ -10,6 +10,14 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
+const addEmployee = [
+    {
+        name: "addEmployee",
+        message: "Add an employee? :",
+        type: "confirm"
+    }
+];
+
 const questions = [
     {
         name: "name",
@@ -45,31 +53,60 @@ const managerQuestion = [
 const engineerQuestion = [
     {
         name: "github",
-        message: "GitHub ID:"
+        message: "GitHub ID:",
+        type: "input"
     }
 ];
 
 const internQuestion = [
     {
         name: "School:",
-        message: "School name:"
+        message: "School name:",
+        type: "input"
     }
 ];
 
 function init() {
-    inquirer.prompt(questions).then(function(responses) {
-        console.log(responses);
-        if(responses.role === "Manager") {
-            const {officeNumber} = inquirer.prompt(managerQuestion);
-        } else 
-        if(responses.role === "Engineer") {
-            const {github} = inquirer.prompt(engineerQuestion);
-        } else {
-            responses.role === "Intern";
-            const {school} = inquirer.prompt(internQuestion);
-        };
+    inquirer.prompt(addEmployee).then(function(response) {
+        console.log(response);
+
+        // while(response.addEmployee) {
+
+            inquirer.prompt(questions).then(function(responses) {
+                console.log(responses);
+        
+                if(responses.role === "Manager") {
+                    const {officeNumber} = inquirer.prompt(managerQuestion);
+                } else 
+                if(responses.role === "Engineer") {
+                    const {github} = inquirer.prompt(engineerQuestion);
+                } else {
+                    responses.role === "Intern";
+                    const {school} = inquirer.prompt(internQuestion);
+                };   
+            });
+        }
+        return;
     });
 };
+
+
+//     inquirer.prompt(questions).then(function(responses) {
+//         console.log(responses);
+
+//         if(responses.role === "Manager") {
+//             const {officeNumber} = inquirer.prompt(managerQuestion);
+//         } else 
+//         if(responses.role === "Engineer") {
+//             const {github} = inquirer.prompt(engineerQuestion);
+//         } else {
+//             responses.role === "Intern";
+//             const {school} = inquirer.prompt(internQuestion);
+//         };   
+//     });
+
+
+// };
 
 
 init();
