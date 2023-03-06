@@ -10,10 +10,12 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
+const team = [];
+
 const addEmployee = [
     {
         name: "addEmployee",
-        message: "Add an employee? :",
+        message: "Add employee:",
         type: "confirm"
     }
 ];
@@ -34,6 +36,7 @@ const questions = [
         message: "Employee ID:",
         type: "input"
     },
+
     {
         name: "role",
         message: "Role:",
@@ -60,65 +63,85 @@ const engineerQuestion = [
 
 const internQuestion = [
     {
-        name: "School:",
+        name: "school",
         message: "School name:",
         type: "input"
     }
 ];
 
 function init() {
-    inquirer.prompt(addEmployee).then(function(response) {
-        console.log(response);
-
-        // while(response.addEmployee) {
-
-            inquirer.prompt(questions).then(function(responses) {
-                console.log(responses);
+            
+    inquirer.prompt(questions).then(function(responses) {
+        console.log(responses);
         
-                if(responses.role === "Manager") {
-                    const {officeNumber} = inquirer.prompt(managerQuestion);
-                } else 
-                if(responses.role === "Engineer") {
-                    const {github} = inquirer.prompt(engineerQuestion);
-                } else {
-                    responses.role === "Intern";
-                    const {school} = inquirer.prompt(internQuestion);
-                };   
+        if(responses.role === "Manager") {
+            inquirer.prompt(managerQuestion).then(function(managerAnswer) {
+            const manager = new Manager(responses.name, responses.email, responses.id, managerAnswer.officeNumber);
+            // const {officeNumber} = inquirer.prompt(managerQuestion);
+            team.push(manager);
+            addAnotherEmployee();
             });
-        }
-        return;
+
+        } else if(responses.role === "Engineer") {
+            inquirer.prompt(engineerQuestion).then(function(engineerAnswer) {
+            const engineer = new Engineer(responses.name, responses.email, responses.id, engineerAnswer.github);
+            team.push(engineer);
+            addAnotherEmployee();
+            });
+
+        } else if(responses.role === "Intern") {
+            inquirer.prompt(internQuestion).then(function(internAnswer) {
+            const intern = new Intern(responses.name, responses.email, responses.id, internAnswer.school);
+            team.push(intern);
+            addAnotherEmployee();
+            });
+        };
+
     });
 };
 
-
-//     inquirer.prompt(questions).then(function(responses) {
-//         console.log(responses);
-
-//         if(responses.role === "Manager") {
-//             const {officeNumber} = inquirer.prompt(managerQuestion);
-//         } else 
-//         if(responses.role === "Engineer") {
-//             const {github} = inquirer.prompt(engineerQuestion);
-//         } else {
-//             responses.role === "Intern";
-//             const {school} = inquirer.prompt(internQuestion);
-//         };   
-//     });
-
-
-// };
-
+function addAnotherEmployee() {
+    inquirer.prompt(addEmployee).then(function(response) {
+        if(response.addEmployee) {
+            init();
+        } else {
+            fs.writeFile(outputPath, render(team), function() {
+                console.log("HMTL file generated successully! at " + outputPath);
+            });
+        };
+    });
+};
 
 init();
 
-// TODO: Write Code to gather information about the development team members, and render the HTML file.
 
-
-// check if user has finished building team, if so, quit and
-// generate HTML
-
-// pass all employees array to the render function
-
-// rendered file name is team.html
-// check the providd "outputPath" to target team.html
-
+// function init() {
+//     // inquirer.prompt(addEmployee).then(function(response) {
+//     //     // console.log(response);
+//     //     while(response.addEmployee) {
+//             inquirer.prompt(questions).then(function(responses) {
+//                 // console.log(responses);
+        
+//                 if(responses.role === "Manager") {
+//                     const {officeNumber} = inquirer.prompt(managerQuestion);
+//                     // console.log(responses);
+//                     team.push(manager);
+//                     addAnotherEmployee();
+//                     // team.push(responses);
+//                 } else 
+//                 if(responses.role === "Engineer") {
+//                     const {github} = inquirer.prompt(engineerQuestion);
+//                     team.push(engineer);
+//                     addAnotherEmployee();
+//                 } else {
+//                     responses.role === "Intern";
+//                     const {school} = inquirer.prompt(internQuestion);
+//                     team.push(intern);
+//                     addAnotherEmployee();
+//                 };   
+//             });
+        // });
+        // return;
+    // };
+//     console.log(team);
+// };
