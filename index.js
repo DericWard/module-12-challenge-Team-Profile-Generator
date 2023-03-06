@@ -43,7 +43,7 @@ const questions = [
         type: "list",
         choices: ["Manager", "Engineer", "Intern"]
     }
-];
+]
 
 const managerQuestion = [
     { 
@@ -77,7 +77,6 @@ function init() {
         if(responses.role === "Manager") {
             inquirer.prompt(managerQuestion).then(function(managerAnswer) {
             const manager = new Manager(responses.name, responses.email, responses.id, managerAnswer.officeNumber);
-            // const {officeNumber} = inquirer.prompt(managerQuestion);
             team.push(manager);
             addAnotherEmployee();
             });
@@ -96,7 +95,6 @@ function init() {
             addAnotherEmployee();
             });
         };
-
     });
 };
 
@@ -113,35 +111,3 @@ function addAnotherEmployee() {
 };
 
 init();
-
-
-// function init() {
-//     // inquirer.prompt(addEmployee).then(function(response) {
-//     //     // console.log(response);
-//     //     while(response.addEmployee) {
-//             inquirer.prompt(questions).then(function(responses) {
-//                 // console.log(responses);
-        
-//                 if(responses.role === "Manager") {
-//                     const {officeNumber} = inquirer.prompt(managerQuestion);
-//                     // console.log(responses);
-//                     team.push(manager);
-//                     addAnotherEmployee();
-//                     // team.push(responses);
-//                 } else 
-//                 if(responses.role === "Engineer") {
-//                     const {github} = inquirer.prompt(engineerQuestion);
-//                     team.push(engineer);
-//                     addAnotherEmployee();
-//                 } else {
-//                     responses.role === "Intern";
-//                     const {school} = inquirer.prompt(internQuestion);
-//                     team.push(intern);
-//                     addAnotherEmployee();
-//                 };   
-//             });
-        // });
-        // return;
-    // };
-//     console.log(team);
-// };
