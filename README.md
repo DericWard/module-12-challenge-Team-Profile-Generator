@@ -5,7 +5,7 @@
 #### To satisfy assignment 12 of edX's Front End Web Development bootcamp course to gain further practical experience of using Node, importing Node packages, the CLI, and installing and using inquirer and Jest, resolving errors in the Jest test scripts, work with Classes and importing/exporting Classes. Extending Classes.
 ### Installation:
 #### Please clone the following repo: 
-#### [https://github.com/DericWard/module-11-challenge-Professional-README-Generator](https://github.com/DericWard/module-12-challenge-Team-Profile-Generator)
+#### [(https://github.com/DericWard/module-12-challenge-Team-Profile-Generator)]
 ### Tests:
 #### 1. In the directory you cloned this app's repo into, access the CLI via a terminal app.
 #### 2. Type: node index.js
