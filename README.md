@@ -18,5 +18,5 @@
 ### App passing all Jest tests:
 ![image](https://user-images.githubusercontent.com/50495939/223232631-686c5b92-9253-4871-8c0d-c823630a2239.png)
 ### App acreenshot:
-![image](https://user-images.githubusercontent.com/50495939/223194164-294ca6c3-f518-4c52-bcb0-3a125d44549d.png)
+![screenshot](https://user-images.githubusercontent.com/50495939/223239605-e1d1da3a-b9cc-45c1-9cec-fae120088a61.PNG)
 
