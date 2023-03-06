@@ -10,9 +10,9 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./src/page-template.js");
 
-const team = [];
+const team = [];    // array of added employees
 
-const addEmployee = [
+const addEmployee = [ // question to decide whether to add another employee
     {
         name: "addEmployee",
         message: "Add employee:",
@@ -20,7 +20,7 @@ const addEmployee = [
     }
 ];
 
-const questions = [
+const questions = [ // new employee's questions to ask the user
     {
         name: "name",
         message: "Employee name:",
@@ -45,7 +45,7 @@ const questions = [
     }
 ]
 
-const managerQuestion = [
+const managerQuestion = [ // unqiue question for a new manager
     { 
         name: "officeNumber",
         message: "Office number:",
@@ -53,7 +53,7 @@ const managerQuestion = [
     }
 ];
 
-const engineerQuestion = [
+const engineerQuestion = [ // unqiue question for a new engineer
     {
         name: "github",
         message: "GitHub ID:",
@@ -61,7 +61,7 @@ const engineerQuestion = [
     }
 ];
 
-const internQuestion = [
+const internQuestion = [ // // unqiue question for a new intern
     {
         name: "school",
         message: "School name:",
@@ -71,39 +71,38 @@ const internQuestion = [
 
 function init() {
             
-    inquirer.prompt(questions).then(function(responses) {
-        console.log(responses);
+    inquirer.prompt(questions).then(function(responses) {   // run inquirer on the questions array, output to responses
         
-        if(responses.role === "Manager") {
-            inquirer.prompt(managerQuestion).then(function(managerAnswer) {
-            const manager = new Manager(responses.name, responses.email, responses.id, managerAnswer.officeNumber);
-            team.push(manager);
-            addAnotherEmployee();
+        if(responses.role === "Manager") { // if user enters 'manager' run the following code
+            inquirer.prompt(managerQuestion).then(function(managerAnswer) { // ask the manager question and output to managerAnswer
+            const manager = new Manager(responses.name, responses.email, responses.id, managerAnswer.officeNumber); // build the manager profile
+            team.push(manager); // send the new manager profile to the team array
+            addAnotherEmployee(); // run the addAnotherEmployee function to test whether to render or add more employees
             });
 
-        } else if(responses.role === "Engineer") {
-            inquirer.prompt(engineerQuestion).then(function(engineerAnswer) {
-            const engineer = new Engineer(responses.name, responses.email, responses.id, engineerAnswer.github);
-            team.push(engineer);
-            addAnotherEmployee();
+        } else if(responses.role === "Engineer") {  // if user enters 'engineer' run the following code
+            inquirer.prompt(engineerQuestion).then(function(engineerAnswer) { // ask the engineer question and output to engineerAnswer
+            const engineer = new Engineer(responses.name, responses.email, responses.id, engineerAnswer.github);    // build the engineer profile
+            team.push(engineer);    // send the new engineer profile to the team array
+            addAnotherEmployee();   // run the addAnotherEmployee function to test whether to render or add more employees
             });
 
-        } else if(responses.role === "Intern") {
-            inquirer.prompt(internQuestion).then(function(internAnswer) {
-            const intern = new Intern(responses.name, responses.email, responses.id, internAnswer.school);
-            team.push(intern);
-            addAnotherEmployee();
+        } else if(responses.role === "Intern") {    // if user enters 'intern' run the following code
+            inquirer.prompt(internQuestion).then(function(internAnswer) {   // ask the intern question and output to internAnswer
+            const intern = new Intern(responses.name, responses.email, responses.id, internAnswer.school);  // build the intern profile
+            team.push(intern);   // send the new intern profile to the team array
+            addAnotherEmployee();   // run the addAnotherEmployee function to test whether to render or add more employees
             });
         };
     });
 };
 
 function addAnotherEmployee() {
-    inquirer.prompt(addEmployee).then(function(response) {
+    inquirer.prompt(addEmployee).then(function(response) { // ask the user the add another employee question
         if(response.addEmployee) {
-            init();
+            init();     // if they choose to add another, run the init function again
         } else {
-            fs.writeFile(outputPath, render(team), function() {
+            fs.writeFile(outputPath, render(team), function() { // once user finished adding, send the team array to the render function
                 console.log("HMTL file generated successully! at " + outputPath);
             });
         };
