@@ -75,21 +75,21 @@ function init() {
         
         if(responses.role === "Manager") { // if user enters 'manager' run the following code
             inquirer.prompt(managerQuestion).then(function(managerAnswer) { // ask the manager question and output to managerAnswer
-            const manager = new Manager(responses.name, responses.email, responses.id, managerAnswer.officeNumber); // build the manager profile
+            const manager = new Manager(responses.name, responses.id, responses.email, managerAnswer.officeNumber); // build the manager profile
             team.push(manager); // send the new manager profile to the team array
             addAnotherEmployee(); // run the addAnotherEmployee function to test whether to render or add more employees
             });
 
         } else if(responses.role === "Engineer") {  // if user enters 'engineer' run the following code
             inquirer.prompt(engineerQuestion).then(function(engineerAnswer) { // ask the engineer question and output to engineerAnswer
-            const engineer = new Engineer(responses.name, responses.email, responses.id, engineerAnswer.github);    // build the engineer profile
+            const engineer = new Engineer(responses.name, responses.id, responses.email, engineerAnswer.github);    // build the engineer profile
             team.push(engineer);    // send the new engineer profile to the team array
             addAnotherEmployee();   // run the addAnotherEmployee function to test whether to render or add more employees
             });
 
         } else if(responses.role === "Intern") {    // if user enters 'intern' run the following code
             inquirer.prompt(internQuestion).then(function(internAnswer) {   // ask the intern question and output to internAnswer
-            const intern = new Intern(responses.name, responses.email, responses.id, internAnswer.school);  // build the intern profile
+            const intern = new Intern(responses.name, responses.id, responses.email, internAnswer.school);  // build the intern profile
             team.push(intern);   // send the new intern profile to the team array
             addAnotherEmployee();   // run the addAnotherEmployee function to test whether to render or add more employees
             });
