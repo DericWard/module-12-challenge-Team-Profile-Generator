@@ -1,10 +1,8 @@
 # Module 12 Object-Oriented Programming: Team Profile Generator
-
-# Module 11 Challenge: Professional README Generator
 ### Description:
-#### A Command Line (CLI) tool that generates a README.md with contents updated by the user from CLI prompts that have been generated with inquirer.
+#### A Command Line (CLI) tool that generates a team.html file in the ./output folder, its contents updated by the user from CLI prompts that have been generated with inquirer.
 ### Motivation:
-#### To satisfy assignment 11 of edX's Front End Web Development bootcamp course to gain further practical experience of using Node, importing Node packages, the CLI, and installing and using inquirer.
+#### To satisfy assignment 12 of edX's Front End Web Development bootcamp course to gain further practical experience of using Node, importing Node packages, the CLI, and installing and using inquirer and Jest, resolving errors in the Jest test scripts, work with Classes and importing/exporting Classes. Extending Classes.
 ### Installation:
 #### Please clone the following repo: 
 #### https://github.com/DericWard/module-11-challenge-Professional-README-Generator
@@ -17,10 +15,8 @@
 ### NOTE: You must have both node and inquirer 6.3.1 installed to run this app.
 #### Install node: https://nodejs.org/en/download/
 #### Install inquirer: npm install --save inquirer@^6.3.1
-## Your Task
 ### App passing all Jest tests:
 ![image](https://user-images.githubusercontent.com/50495939/223232631-686c5b92-9253-4871-8c0d-c823630a2239.png)
-
 ### App acreenshot:
 ![image](https://user-images.githubusercontent.com/50495939/223194164-294ca6c3-f518-4c52-bcb0-3a125d44549d.png)
 
