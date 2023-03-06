@@ -11,7 +11,7 @@
 #### 2. Type: node index.js
 #### 3. Follow the on-screen prompts and submit your responses.
 #### 4. Navigate to ./output/team.HTML, open this HTML file in a browser.
-#### 5. Ensure team.HTML refelcts the data you input to the CLI.
+#### 5. Ensure team.HTML reflcts the data you input to the CLI.
 ### NOTE: You must have both node and inquirer 6.3.1 installed to run this app.
 #### Install node: https://nodejs.org/en/download/
 #### Install inquirer: npm install --save inquirer@^6.3.1
