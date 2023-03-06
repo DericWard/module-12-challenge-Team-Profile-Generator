@@ -4,6 +4,9 @@
 
 Your task is to take the given starter code and convert it into a working Node.js command-line application. This application will take in information about employees on a software engineering team, then generates an HTML webpage that displays summaries for each person. You have been provided with tests, so make sure every part of your code passes each provided test.
 
+### App acreenshot:
+![image](https://user-images.githubusercontent.com/50495939/223194164-294ca6c3-f518-4c52-bcb0-3a125d44549d.png)
+
 ## User Story
 
 As a manager a user want to generate a webpage that displays my team's basic info so that a user have quick access to their emails and GitHub profiles.
